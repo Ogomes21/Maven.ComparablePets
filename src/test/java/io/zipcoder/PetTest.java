@@ -1,19 +1,30 @@
 package io.zipcoder;
 
+import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Scanner;
+import java.util.Arrays;
 
 public class PetTest {
     @Test
-    public int howManyPets() {
-        //When asked how many pets they have, a person will answer by giving the kind of pet & name.
+    public void sortPetsByTypeThenNameTest() {
+        Cat cat0 = new Cat("Milo");
+        Dog dog1 = new Dog("Fido");
+        Cat cat1 = new Cat("Fido");
+        Pet[] myPetList = new Pet[]{cat0, dog1, cat1};
+        Pet[] expected = new Pet[]{cat1, cat0, dog1};
 
-        //When
-        Scanner input = new Scanner();
+        Pet[] actual = Pet.sortPetsByTypeThenName(myPetList);
+        Assert.assertArrayEquals(expected, actual);
+    }
 
-        //Given
+    @Test
+    public void compareToTest() {
+        Cat cat0 = new Cat("Milo");
+        Dog dog1 = new Dog("Fido");
+        Cat cat1 = new Cat("Fido");
+        Assert.assertTrue(cat1.compareTo(dog1) <0);
+        Assert.assertTrue(dog1.compareTo(cat0) <0);
 
-        //Then
     }
 }
